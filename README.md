@@ -41,7 +41,10 @@ portfolio/
 │   └── main.js                 # Theme, nav, reveals, counters, terminal, contact form
 ├── assets/
 │   ├── avatar.jpg              # GitHub profile photo
-│   └── favicon.svg             # RN monogram
+│   ├── logo.png                # Original RN monogram source
+│   ├── logo-mark.png           # Transparent navbar / footer mark
+│   ├── favicon.png             # 64px browser icon
+│   └── apple-touch-icon.png    # 180px mobile icon
 ├── data/
 │   └── messages.json           # Created by the server when someone submits the form
 ├── server.js                   # Express static server + /api/contact
