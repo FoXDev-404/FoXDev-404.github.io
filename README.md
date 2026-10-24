@@ -15,7 +15,7 @@ Node.js/Express server for local development and a working contact endpoint.
 - **Fully responsive** — mobile menu, stacked layouts, reduced motion support
 - **Featured projects** — BGMI Cup, AI MockPrep, LLM Engineering, with live links
 - **Developer console** — a working terminal in the Skills section with command history, quick commands, and real project links
-- **Built-from-scratch details** — live page weight, zero JS dependencies, shell-prompt hero, editor-style profile card, and a `T` theme shortcut
+- **Developer details** — zero JS dependencies, shell-prompt hero, editor-style profile card, and a `T` theme shortcut
 - **Animated details** — scroll reveals, counters, skill meters, subtle card tilt
 - **Working contact form** — posts to a Node endpoint (saved locally) or falls back to `mailto:`
 - **No build step** — open `index.html`, or run the Express server
@@ -78,8 +78,6 @@ visitor's email app instead of posting to the server.
 - The Skills terminal is a small command interpreter in `js/main.js`. Commands live in the
   `commands` object; add a new key to add a command. It supports command history with `↑` / `↓`.
 - Press `T` outside a form field to toggle the theme.
-- The page-weight stat is measured in the browser with the Performance API. It counts same-origin
-  HTML, CSS, JS, and images; web fonts are excluded.
 
 ## Contact form behaviour
 

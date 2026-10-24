@@ -560,55 +560,6 @@
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  /* ------------------------------------------------------------------
-     Live page weight for the "Built from scratch" panel
-  ------------------------------------------------------------------ */
-  const pageWeight = document.getElementById('pageWeight');
-
-  if (pageWeight && 'performance' in window) {
-    const updatePageWeight = async () => {
-      const navEntry = performance.getEntriesByType('navigation')[0];
-
-      let bytes = navEntry
-        ? (navEntry.decodedBodySize || navEntry.encodedBodySize || navEntry.transferSize || 0)
-        : 0;
-
-      const assets = new Set();
-
-      document.querySelectorAll('link[rel="stylesheet"][href], script[src], img[src]').forEach((element) => {
-        const url = element.getAttribute('href') || element.getAttribute('src');
-        if (!url) return;
-
-        try {
-          const absolute = new URL(url, window.location.href);
-          if (absolute.origin === window.location.origin) assets.add(absolute.href);
-        } catch (error) {
-          /* ignore malformed asset URLs */
-        }
-      });
-
-      /* Read each asset from cache so the number stays stable across reloads. */
-      const sizes = await Promise.all([...assets].map(async (url) => {
-        try {
-          const response = await fetch(url, { cache: 'force-cache' });
-          if (!response.ok) return 0;
-          return (await response.blob()).size;
-        } catch (error) {
-          return 0;
-        }
-      }));
-
-      bytes += sizes.reduce((total, size) => total + size, 0);
-
-      if (bytes > 0) {
-        pageWeight.textContent = `~${Math.max(1, Math.round(bytes / 1024))} KB`;
-      }
-    };
-
-    if (document.readyState === 'complete') updatePageWeight();
-    else window.addEventListener('load', updatePageWeight);
-  }
-
   /* Console note for anyone who opens devtools. */
   console.log(
     '%c RAJPAL NISHAD %c Full Stack Developer · AI & LLM\n%cYou found the console — source: https://github.com/FoXDev-404/FoXDev-404.github.io',
