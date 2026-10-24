@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#08090a"/>
-  <rect x="0" y="0" width="64" height="6" fill="#ff2e43"/>
-  <path d="M8 10h36l12 12v32H20L8 42V10Z" fill="#c8ff3d"/>
-  <path d="M8 10h36l12 12H20L8 10Z" fill="#a6e02a"/>
-  <text x="33" y="44" text-anchor="middle" font-family="Arial Narrow, Impact, sans-serif" font-size="27" font-weight="700" fill="#0a0b00">RN</text>
-</svg>
