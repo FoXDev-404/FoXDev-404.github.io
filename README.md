@@ -4,6 +4,8 @@ A black, crimson, and neon-green poster-style portfolio for **Rajpal Nishad**, F
 Built with plain HTML, CSS, and JavaScript, with an optional Node.js/Express server for local
 development and a working contact endpoint.
 
+**Live:** <https://foxdev-404.github.io>
+
 ![Theme: light + dark](https://img.shields.io/badge/theme-light%20%2B%20dark-c8ff3d)
 
 ## Highlights
