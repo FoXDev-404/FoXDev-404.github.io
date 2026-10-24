@@ -14,6 +14,7 @@ development and a working contact endpoint.
 - **Light & dark mode** — toggle in the navbar, saved in `localStorage`, defaults to dark
 - **Fully responsive** — mobile menu, stacked layouts, reduced motion support
 - **Featured projects** — BGMI Cup, AI MockPrep, LLM Engineering, with live links
+- **Code showcase** — tabbed, keyboard-accessible snippets from real work: SSE streaming, Gemini scoring, and a RAG pipeline
 - **Animated details** — scroll reveals, counters, skill meters, subtle card tilt
 - **Working contact form** — posts to a Node endpoint (saved locally) or falls back to `mailto:`
 - **No build step** — open `index.html`, or run the Express server
@@ -36,7 +37,7 @@ portfolio/
 ├── css/
 │   └── style.css               # Theme tokens, layouts, components, responsive rules
 ├── js/
-│   └── main.js                 # Theme toggle, nav, reveals, counters, contact form
+│   └── main.js                 # Theme, nav, reveals, counters, code tabs, contact form
 ├── assets/
 │   ├── avatar.jpg              # GitHub profile photo
 │   └── favicon.svg             # RN monogram

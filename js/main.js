@@ -269,6 +269,62 @@
   }
 
   /* ------------------------------------------------------------------
+     Code showcase tabs
+     Click or arrow keys switch the visible snippet and language label.
+  ------------------------------------------------------------------ */
+  const codeTabs = Array.from(document.querySelectorAll('.code-tab'));
+  const codePanels = Array.from(document.querySelectorAll('.code-panel'));
+  const codeLang = document.getElementById('codeLang');
+
+  function selectCodeTab(tab, focus) {
+    if (!tab) return;
+
+    const panelId = tab.getAttribute('aria-controls');
+    const panel = panelId ? document.getElementById(panelId) : null;
+
+    codeTabs.forEach((item) => {
+      const active = item === tab;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+
+    codePanels.forEach((item) => {
+      const active = item === panel;
+      item.classList.toggle('is-active', active);
+      item.hidden = !active;
+    });
+
+    if (codeLang && tab.dataset.lang) {
+      codeLang.textContent = tab.dataset.lang;
+    }
+
+    if (focus) tab.focus();
+  }
+
+  if (codeTabs.length) {
+    codeTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectCodeTab(tab, false));
+
+      tab.addEventListener('keydown', (event) => {
+        const last = codeTabs.length - 1;
+        let next = null;
+
+        if (event.key === 'ArrowRight') next = codeTabs[index === last ? 0 : index + 1];
+        else if (event.key === 'ArrowLeft') next = codeTabs[index === 0 ? last : index - 1];
+        else if (event.key === 'Home') next = codeTabs[0];
+        else if (event.key === 'End') next = codeTabs[last];
+
+        if (!next) return;
+        event.preventDefault();
+        selectCodeTab(next, true);
+      });
+    });
+
+    selectCodeTab(codeTabs.find((tab) => tab.classList.contains('is-active')) || codeTabs[0], false);
+  }
+
+  /* ------------------------------------------------------------------
      Contact form
      Posts to /api/contact when the Node server is running. On a static
      host (or file://), it falls back to opening the visitor's mail app.
