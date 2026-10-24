@@ -1,8 +1,8 @@
 # Rajpal Nishad — Portfolio
 
 A black, crimson, and neon-green poster-style portfolio for **Rajpal Nishad**, Full Stack Developer · AI & LLM.
-Built with plain HTML, CSS, and JavaScript, with an optional Node.js/Express server for local
-development and a working contact endpoint.
+Built with plain HTML, CSS, and JavaScript — no frameworks, no build step — with an optional
+Node.js/Express server for local development and a working contact endpoint.
 
 **Live:** <https://foxdev-404.github.io>
 
@@ -14,7 +14,8 @@ development and a working contact endpoint.
 - **Light & dark mode** — toggle in the navbar, saved in `localStorage`, defaults to dark
 - **Fully responsive** — mobile menu, stacked layouts, reduced motion support
 - **Featured projects** — BGMI Cup, AI MockPrep, LLM Engineering, with live links
-- **Code showcase** — tabbed, keyboard-accessible snippets from real work: SSE streaming, Gemini scoring, and a RAG pipeline
+- **Developer console** — a working terminal in the Skills section with command history, quick commands, and real project links
+- **Built-from-scratch details** — live page weight, zero JS dependencies, shell-prompt hero, editor-style profile card, and a `T` theme shortcut
 - **Animated details** — scroll reveals, counters, skill meters, subtle card tilt
 - **Working contact form** — posts to a Node endpoint (saved locally) or falls back to `mailto:`
 - **No build step** — open `index.html`, or run the Express server
@@ -25,7 +26,7 @@ development and a working contact endpoint.
 | --- | --- |
 | Markup | HTML5 |
 | Styling | CSS3 (custom properties, Grid, Flexbox) |
-| Behaviour | Vanilla JavaScript (IntersectionObserver, fetch) |
+| Behaviour | Vanilla JavaScript (IntersectionObserver, fetch, custom terminal) |
 | Server | Node.js + Express 5 |
 | Fonts | Anton, Inter, JetBrains Mono (Google Fonts) |
 
@@ -37,7 +38,7 @@ portfolio/
 ├── css/
 │   └── style.css               # Theme tokens, layouts, components, responsive rules
 ├── js/
-│   └── main.js                 # Theme, nav, reveals, counters, code tabs, contact form
+│   └── main.js                 # Theme, nav, reveals, counters, terminal, contact form
 ├── assets/
 │   ├── avatar.jpg              # GitHub profile photo
 │   └── favicon.svg             # RN monogram
@@ -71,6 +72,15 @@ npm run dev
 You can also just open `index.html` in a browser. In that case the contact form opens the
 visitor's email app instead of posting to the server.
 
+## Developer details
+
+- The hero shell prompt and the editor-style profile card are plain HTML and CSS.
+- The Skills terminal is a small command interpreter in `js/main.js`. Commands live in the
+  `commands` object; add a new key to add a command. It supports command history with `↑` / `↓`.
+- Press `T` outside a form field to toggle the theme.
+- The page-weight stat is measured in the browser with the Performance API. It counts same-origin
+  HTML, CSS, JS, and images; web fonts are excluded.
+
 ## Contact form behaviour
 
 - **With the Node server** → `POST /api/contact` validates the fields and appends the message to
@@ -87,6 +97,7 @@ visitor's email app instead of posting to the server.
 | Name, bio, social links | `index.html` |
 | Colours, spacing, fonts | CSS variables at the top of `css/style.css` |
 | Featured / mini projects | `<section id="projects">` in `index.html` |
+| Terminal commands | `commands` object in `js/main.js` |
 | Resume download | Replace `Rajpal_Nishad_Resume.pdf` (keep the filename, or update both links) |
 | Avatar | Replace `assets/avatar.jpg` |
 | Theme default | Inline script in `<head>` of `index.html` |

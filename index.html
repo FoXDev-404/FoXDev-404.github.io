@@ -109,7 +109,12 @@
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="hero__status reveal">Available for work <span>·</span> 2026 graduate</p>
-          <p class="hero__eyebrow reveal" style="--d:.08s">Portfolio // 2026</p>
+          <p class="hero__eyebrow hero__prompt reveal" style="--d:.08s">
+            <span class="hero__prompt-path">~/rajpal-nishad</span>
+            <span class="hero__prompt-symbol" aria-hidden="true">$</span>
+            <span class="hero__prompt-cmd">whoami</span>
+            <span class="hero__cursor" aria-hidden="true"></span>
+          </p>
 
           <h1 class="hero__title" id="hero-title">
             <span class="line reveal" style="--d:.14s">Rajpal</span>
@@ -178,8 +183,9 @@
         <div class="hero__visual reveal" style="--d:.3s">
           <div class="profile-card" id="profileCard">
             <div class="profile-card__top">
-              <span>Developer profile</span>
-              <span>ID // FOXDEV-404</span>
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="profile-card__file">profile.ts</span>
+              <span class="profile-card__branch"><i aria-hidden="true"></i> main</span>
             </div>
 
             <div class="avatar-wrap">
@@ -214,6 +220,13 @@
             <div class="profile-card__foot">
               <span>New Delhi, IN</span>
               <span class="online"><i aria-hidden="true"></i> Open to work</span>
+            </div>
+
+            <div class="profile-card__status" aria-hidden="true">
+              <span>✓ no build step</span>
+              <span>TypeScript</span>
+              <span>UTF-8</span>
+              <span>Ln 26, Col 1</span>
             </div>
           </div>
 
@@ -311,7 +324,7 @@
         <header class="section-head reveal">
           <p class="section-label">02 // Skills</p>
           <h2 class="section-title" id="skills-title">My tech <span class="accent-red">stack.</span></h2>
-          <p class="section-sub">The languages, frameworks, and tools I use to ship products — with code samples from my projects.</p>
+          <p class="section-sub">The languages, frameworks, and tools I use to ship products. Try the terminal.</p>
         </header>
 
         <div class="skills-grid">
@@ -424,122 +437,84 @@
           </article>
         </div>
 
-        <div class="code-showcase reveal">
-          <div class="code-window">
-            <div class="code-window__bar">
-              <span class="code-window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <div class="code-tabs" role="tablist" aria-label="Code samples">
-                <button class="code-tab is-active" id="codeTabRealtime" type="button" role="tab" aria-selected="true" aria-controls="codeRealtime" data-lang="Python">realtime.py</button>
-                <button class="code-tab" id="codeTabScoring" type="button" role="tab" aria-selected="false" aria-controls="codeScoring" data-lang="TypeScript" tabindex="-1">scoring.ts</button>
-                <button class="code-tab" id="codeTabRag" type="button" role="tab" aria-selected="false" aria-controls="codeRag" data-lang="Python" tabindex="-1">rag.py</button>
-              </div>
-              <span class="code-window__lang" id="codeLang">Python</span>
+        <div class="dev-lab reveal">
+          <div class="terminal" id="terminal">
+            <div class="terminal__bar">
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="terminal__title">rajpal@portfolio: ~</span>
+              <span class="terminal__shell">zsh</span>
             </div>
 
-            <div class="code-panels">
-              <pre class="code-panel is-active" id="codeRealtime" role="tabpanel" aria-labelledby="codeTabRealtime" tabindex="0"><code><span class="tok-com"># Live match updates — BGMI Cup</span>
-<span class="tok-key">import</span> json, time
-<span class="tok-key">from</span> flask <span class="tok-key">import</span> <span class="tok-type">Response</span>
+            <div class="terminal__body" id="terminalBody">
+              <div class="terminal__output" id="terminalOutput" role="log" aria-live="polite" aria-label="Terminal output">
+                <p class="terminal__line"><span class="terminal__prompt-label"><span class="terminal__user">rajpal@portfolio</span><span class="terminal__path">:~$</span></span> whoami</p>
+                <p class="terminal__line terminal__line--out">Rajpal Nishad — Full Stack Developer · AI &amp; LLM</p>
+                <p class="terminal__line terminal__line--muted">New Delhi, India · B.Tech CSE '26 · open to work</p>
+                <p class="terminal__line terminal__line--hint">Type <b>help</b> and press Enter — or tap a command below.</p>
+              </div>
 
-<span class="tok-key">@app</span>.get(<span class="tok-str">"/api/matches/&lt;int:match_id&gt;/stream"</span>)
-<span class="tok-key">def</span> <span class="tok-fn">stream_match</span>(match_id):
-    <span class="tok-key">def</span> <span class="tok-fn">events</span>():
-        last = <span class="tok-key">None</span>
-        <span class="tok-key">while</span> <span class="tok-key">True</span>:
-            snapshot = <span class="tok-fn">match_snapshot</span>(match_id)
-            <span class="tok-key">if</span> snapshot != last:
-                last = snapshot
-                <span class="tok-key">yield</span> <span class="tok-str">f"data: {json.dumps(snapshot)}\n\n"</span>
-            time.<span class="tok-fn">sleep</span>(<span class="tok-num">2</span>)
+              <form class="terminal__form" id="terminalForm" autocomplete="off">
+                <label class="sr-only" for="terminalInput">Terminal command</label>
+                <span class="terminal__prompt-label" aria-hidden="true"><span class="terminal__user">rajpal@portfolio</span><span class="terminal__path">:~$</span></span>
+                <input class="terminal__input" id="terminalInput" name="command" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="help" aria-describedby="terminalHelp">
+                <button class="terminal__send" type="submit" aria-label="Run command">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>
+                </button>
+              </form>
+              <p class="sr-only" id="terminalHelp">Available commands: help, whoami, about, stack, projects, experience, contact, resume, theme, clear.</p>
+            </div>
 
-    <span class="tok-key">return</span> <span class="tok-type">Response</span>(<span class="tok-fn">events</span>(), mimetype=<span class="tok-str">"text/event-stream"</span>)
-</code></pre>
-
-              <pre class="code-panel" id="codeScoring" role="tabpanel" aria-labelledby="codeTabScoring" tabindex="0" hidden><code><span class="tok-com">// Per-question scoring — AI MockPrep</span>
-<span class="tok-key">import</span> { <span class="tok-type">GoogleGenerativeAI</span> } <span class="tok-key">from</span> <span class="tok-str">"@google/generative-ai"</span>;
-
-<span class="tok-key">const</span> model = <span class="tok-key">new</span> <span class="tok-type">GoogleGenerativeAI</span>(apiKey).<span class="tok-fn">getGenerativeModel</span>({
-  model: <span class="tok-str">"gemini-2.0-flash"</span>,
-});
-
-<span class="tok-key">const</span> response = <span class="tok-key">await</span> model.<span class="tok-fn">generateContent</span>({
-  contents: [{ role: <span class="tok-str">"user"</span>, parts: [{ text: prompt }] }],
-  generationConfig: { responseMimeType: <span class="tok-str">"application/json"</span> },
-});
-
-<span class="tok-key">const</span> score = JSON.<span class="tok-fn">parse</span>(response.response.<span class="tok-fn">text</span>()) <span class="tok-key">as</span> <span class="tok-type">Score</span>;
-
-<span class="tok-key">return</span> {
-  questionId,
-  ...score,
-  feedback: score.feedback.<span class="tok-fn">trim</span>(),
-};
-</code></pre>
-
-              <pre class="code-panel" id="codeRag" role="tabpanel" aria-labelledby="codeTabRag" tabindex="0" hidden><code><span class="tok-com"># RAG pipeline — LLM Engineering</span>
-<span class="tok-key">from</span> langchain_chroma <span class="tok-key">import</span> <span class="tok-type">Chroma</span>
-<span class="tok-key">from</span> langchain_ollama <span class="tok-key">import</span> <span class="tok-type">Ollama</span>, <span class="tok-type">OllamaEmbeddings</span>
-<span class="tok-key">from</span> langchain.chains <span class="tok-key">import</span> <span class="tok-type">RetrievalQA</span>
-
-embeddings = <span class="tok-type">OllamaEmbeddings</span>(model=<span class="tok-str">"nomic-embed-text"</span>)
-vectorstore = <span class="tok-type">Chroma</span>(
-    persist_directory=<span class="tok-str">".chroma"</span>,
-    embedding_function=embeddings,
-)
-retriever = vectorstore.<span class="tok-fn">as_retriever</span>(search_kwargs={<span class="tok-str">"k"</span>: <span class="tok-num">4</span>})
-
-chain = <span class="tok-type">RetrievalQA</span>.<span class="tok-fn">from_chain_type</span>(
-    llm=<span class="tok-type">Ollama</span>(model=<span class="tok-str">"llama3.1"</span>),
-    retriever=retriever,
-    chain_type=<span class="tok-str">"stuff"</span>,
-)
-answer = chain.<span class="tok-fn">invoke</span>({<span class="tok-str">"query"</span>: question})
-</code></pre>
+            <div class="terminal__quick" aria-label="Quick commands">
+              <span class="terminal__quick-label">Try</span>
+              <button type="button" data-cmd="help">help</button>
+              <button type="button" data-cmd="stack">stack</button>
+              <button type="button" data-cmd="projects">projects</button>
+              <button type="button" data-cmd="contact">contact</button>
+              <button type="button" data-cmd="theme">theme</button>
             </div>
           </div>
 
-          <aside class="code-notes">
-            <p class="card-kicker">// How I build</p>
-            <h3>From schema to ship.</h3>
-            <ul class="code-notes__list">
-              <li>
-                <span class="code-notes__num">01</span>
-                <div>
-                  <h4>APIs &amp; realtime</h4>
-                  <p>REST endpoints, SSE streams, and polling fallbacks for live match data.</p>
-                </div>
-              </li>
-              <li>
-                <span class="code-notes__num">02</span>
-                <div>
-                  <h4>Security &amp; reliability</h4>
-                  <p>CSRF-protected sessions, rate limiting, audited scoring, and input validation.</p>
-                </div>
-              </li>
-              <li>
-                <span class="code-notes__num">03</span>
-                <div>
-                  <h4>Testing &amp; deployment</h4>
-                  <p>pytest and Playwright suites, then shipped on Railway, Vercel, and GitHub Pages.</p>
-                </div>
-              </li>
-              <li>
-                <span class="code-notes__num">04</span>
-                <div>
-                  <h4>AI / LLM integration</h4>
-                  <p>Gemini, LangChain, ChromaDB, RAG, embeddings, and tool-calling workflows.</p>
-                </div>
-              </li>
-            </ul>
-            <a class="text-link" href="https://github.com/FoXDev-404?tab=repositories" target="_blank" rel="noopener noreferrer">
-              Browse the repositories
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
-            </a>
-          </aside>
+          <aside class="build-panel">
+            <p class="card-kicker">// Under the hood</p>
+            <h3>Built from scratch.</h3>
+            <p class="build-panel__lede">
+              No page builder, no UI kit, no framework runtime. Every layout, transition, and
+              interaction on this site is hand-written.
+            </p>
 
-          <p class="code-showcase__note">
-            Snippets adapted from my project code for clarity — full sources on GitHub.
-          </p>
+            <dl class="build-stats">
+              <div>
+                <dt>Frameworks</dt>
+                <dd>0</dd>
+              </div>
+              <div>
+                <dt>JS deps</dt>
+                <dd>0</dd>
+              </div>
+              <div>
+                <dt>Page weight</dt>
+                <dd id="pageWeight" title="HTML, CSS, JS, and images on this origin; web fonts excluded.">—</dd>
+              </div>
+              <div>
+                <dt>Hand-written</dt>
+                <dd>100%</dd>
+              </div>
+            </dl>
+
+            <ul class="build-list">
+              <li>Semantic HTML with keyboard and screen-reader support</li>
+              <li>Responsive from 320px up, reduced-motion aware</li>
+              <li>Theme applied before first paint, saved in localStorage</li>
+              <li>Static deploy on GitHub Pages — zero build step</li>
+            </ul>
+
+            <div class="build-panel__links">
+              <a class="text-link" href="https://github.com/FoXDev-404/FoXDev-404.github.io" target="_blank" rel="noopener noreferrer">
+                View the source
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -918,6 +893,14 @@ answer = chain.<span class="tok-fn">invoke</span>({<span class="tok-str">"query"
           <a href="https://github.com/FoXDev-404" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </div>
+
+      <p class="footer__build">
+        <span class="footer__build-status"><i aria-hidden="true"></i> deployed</span>
+        <span>hand-coded with HTML, CSS &amp; vanilla JS</span>
+        <span>0 JS dependencies</span>
+        <span>press <kbd>T</kbd> for theme</span>
+        <a href="https://github.com/FoXDev-404/FoXDev-404.github.io" target="_blank" rel="noopener noreferrer">view source <span aria-hidden="true">↗</span></a>
+      </p>
 
       <p class="footer__ghost" aria-hidden="true">RAJPAL</p>
 
